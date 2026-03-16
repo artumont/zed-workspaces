@@ -11,7 +11,7 @@ Since Zed's native extension API does not currently support window or folder man
 First, install the CLI globally so it can be executed from anywhere. Note that you need Node.js installed on your system.
 
 ```bash
-git clone <this_repository_url> zed-workspaces
+git clone https://github.com/artumont/zed-workspaces.git zed-workspaces
 cd zed-workspaces
 pnpm install
 npm install -g .
@@ -44,7 +44,7 @@ Add the following configuration to the `tasks.json` array:
 ]
 ```
 
-*Note: If `zed-workspaces` is not found after running `pnpm install -g .`, you may need to specify the absolute path to your global node binaries or use the absolute path to the local `index.js` instead of the global command.*
+*Note: If `zed-workspaces` is not found after running `npm install -g .`, you may need to specify the absolute path to your global node binaries or use the absolute path to the local `index.js` instead of the global command.*
 
 ### 3. Add Keyboard Shortcuts (Optional)
 
