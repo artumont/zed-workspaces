@@ -1,7 +1,0 @@
-id = "zed-workspaces"
-name = "ZedWorkspaces"
-version = "0.0.1"
-schema_version = 1
-authors = ["Arturo Montes <artumontg@gmail.com>"]
-description = "Workspace saving and reading support for zed"
-repository = "https://github.com/artumont/zed-workspaces"

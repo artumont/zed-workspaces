@@ -1,0 +1,21 @@
+{
+  "name": "zed-workspaces",
+  "version": "1.0.0",
+  "description": "Adds VS Code-style .code-workspace support to Zed",
+  "main": "index.js",
+  "bin": {
+    "zed-workspaces": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Artu <artumontg@gmail.com>",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "commander": "^14.0.3",
+    "inquirer": "^8.2.7",
+    "json5": "^2.2.3"
+  }
+}

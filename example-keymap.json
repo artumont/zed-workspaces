@@ -1,0 +1,8 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-o": ["task::Spawn", { "task_name": "Open Workspace" }]
+    }
+  }
+]
