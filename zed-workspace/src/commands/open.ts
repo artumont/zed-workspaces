@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { exec, spawn } from "child_process";
 import { findWorkspacesRecursive, isRunning } from "../utils";
+import json5 from 'json5';
 
 interface folderEntry {
   path?: string;
@@ -17,7 +18,7 @@ function openZedFromWorkspace(filePath: string): boolean {
   
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const workspaceConfig = JSON.parse(content);
+    const workspaceConfig = json5.parse(content);
     
     if (!workspaceConfig.folders || !Array.isArray(workspaceConfig.folders)) {
       console.error(`Invalid workspace file format: "folders" property is missing or not an array.`);
