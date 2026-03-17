@@ -47,8 +47,15 @@ export default async function createWorkspace(
       name: "name",
       message: "Enter a name for the new workspace (without extension):",
       validate: (answer: string) => {
-        if (answer.trim() === "") {
+        const trimmed = answer.trim();
+        if (trimmed === "") {
           return "Workspace name cannot be empty.";
+        }
+        if (trimmed.includes("/") || trimmed.includes("\\") || trimmed.includes("\0")) {
+          return "Workspace name cannot contain path separators or control characters.";
+        }
+        if (trimmed === "." || trimmed === ".." || trimmed.includes("..")) {
+          return 'Workspace name cannot be "." or contain "..".';
         }
         return true;
       },
