@@ -16,6 +16,20 @@ export default async function saveCurrentWorkspace(name: string | undefined = un
         }
       }
     ]);
+    name = nameAnswer.name;
   }
-  return false;
+
+  if (!name) {
+    return false;
+  }
+
+  const fileName = `${name}.json`;
+  const fileContents = JSON.stringify({ name }, null, 2);
+
+  try {
+    await fs.promises.writeFile(fileName, fileContents, { encoding: "utf8" });
+    return true;
+  } catch {
+    return false;
+  }
 }
