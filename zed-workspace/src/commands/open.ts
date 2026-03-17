@@ -39,7 +39,7 @@ function openZedFromWorkspace(filePath: string): boolean {
     
         if (pathsToOpen.length === 0) {
           console.error('Error: No valid folders found in the workspace file.');
-          process.exit(1);
+          return false;
         }
     
     console.log(`Opening ${pathsToOpen.length} folders in Zed...`);
