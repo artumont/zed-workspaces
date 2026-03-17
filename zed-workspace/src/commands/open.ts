@@ -1,7 +1,7 @@
 import inquirer from "inquirer"
 import fs from 'fs';
 import path from 'path';
-import { exec } from "child_process";
+import { exec, spawn } from "child_process";
 import { findWorkspacesRecursive, isRunning } from "../utils";
 
 interface folderEntry {
@@ -46,30 +46,38 @@ function openZedFromWorkspace(filePath: string): boolean {
     
     // IDEA: Add a settings check to see if we should do some extra stuff before opening the workspace like opening on a new window or something like that.
     if (isRunning("zed")) {
-      exec(`zed ${pathsToOpen.map((p: string) => `"${p}"`).join(' ')} --reuse`, (error, stdout, stderr) => {
-        if (error) {
-          console.error(`Error opening workspace in Zed: ${error.message}`);
-          return false;
-        }
-        if (stderr) {
-          console.error(`Error output from Zed: ${stderr}`);
-          return false;
-        }
-        console.log(`Zed output: ${stdout}`);
+      const args = [...pathsToOpen, "--reuse"];
+      const zedProcess = spawn("zed", args);
+
+      zedProcess.stdout.on("data", (data: Buffer) => {
+        console.log(`Zed output: ${data.toString()}`);
       });
+
+      zedProcess.stderr.on("data", (data: Buffer) => {
+        console.error(`Error output from Zed: ${data.toString()}`);
+      });
+
+      zedProcess.on("error", (error: Error) => {
+        console.error(`Error opening workspace in Zed: ${error.message}`);
+      });
+
       return true;
     } else {
-      exec(`zed ${pathsToOpen.map((p: string) => `"${p}"`).join(' ')} --new`, (error, stdout, stderr) => {
-        if (error) {
-          console.error(`Error opening workspace in Zed: ${error.message}`);
-          return false;
-        }
-        if (stderr) {
-          console.error(`Error output from Zed: ${stderr}`);
-          return false;
-        }
-        console.log(`Zed output: ${stdout}`);
+      const args = [...pathsToOpen, "--new"];
+      const zedProcess = spawn("zed", args);
+
+      zedProcess.stdout.on("data", (data: Buffer) => {
+        console.log(`Zed output: ${data.toString()}`);
       });
+
+      zedProcess.stderr.on("data", (data: Buffer) => {
+        console.error(`Error output from Zed: ${data.toString()}`);
+      });
+
+      zedProcess.on("error", (error: Error) => {
+        console.error(`Error opening workspace in Zed: ${error.message}`);
+      });
+
       return true;
     }
   } catch (error: unknown) {
