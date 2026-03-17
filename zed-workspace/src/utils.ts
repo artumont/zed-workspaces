@@ -1,4 +1,4 @@
-import fs, { readSync } from "fs";
+import fs from "fs";
 import path from "path";
 
 /**
