@@ -25,7 +25,6 @@ function generateWorkspaceFile(
       workspaceFilePath,
       JSON.stringify(workspaceContent, null, 2),
     );
-    console.log(`Workspace created at ${workspaceFilePath}`);
     return workspaceFilePath;
   } catch (error: unknown) {
     if (error instanceof Error) {
