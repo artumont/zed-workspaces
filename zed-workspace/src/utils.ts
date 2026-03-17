@@ -44,7 +44,14 @@ export function findWorkspacesRecursive(dir: string, fileList: string[] = []): s
 export function findAllDirectoriesOnRoot(root: string): string[] {
   try {
     const entries = fs.readdirSync(root, { withFileTypes: true });
-    return entries.filter(entry => entry.isDirectory()).map(dir => dir.name);
+    return entries
+      .filter(
+        (entry) =>
+          entry.isDirectory() &&
+          entry.name !== "node_modules" &&
+          !entry.name.startsWith("."),
+      )
+      .map((dir) => dir.name);
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(`Error reading directories in ${root}: ${error.message}`);
