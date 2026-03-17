@@ -78,14 +78,6 @@ Press your configured shortcut (`Ctrl+Shift+O` by default), or open the Command 
 - If your folder contains multiple workspace files, a terminal prompt will appear asking you to select one.
 - If it cannot find any workspace file, it will display an error message.
 
-### Saving a Workspace
-
-Open the Command Palette, type `task: spawn`, and select `Save Workspace`.
-
-- A terminal prompt will ask you to name the workspace.
-- The CLI will generate a `.code-workspace` file in your root folder.
-- You can manually edit this file to add more folders.
-
 ## Workspace Format
 
 The CLI uses the standard VS Code workspace format. 
