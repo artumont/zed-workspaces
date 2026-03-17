@@ -35,7 +35,7 @@ function openZedFromWorkspace(filePath: string): boolean {
           
           // Resolve path relative to the workspace file directory
           return path.resolve(workspaceDir, folderPath);
-        }).filter((p: string | undefined) => p !== null);
+        }).filter((p: string | null): p is string => p !== null);
     
         if (pathsToOpen.length === 0) {
           console.error('Error: No valid folders found in the workspace file.');
