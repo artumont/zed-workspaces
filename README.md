@@ -14,6 +14,7 @@ First, install the CLI globally so it can be executed from anywhere. Note that y
 git clone https://github.com/artumont/zed-workspaces.git zed-workspaces
 cd zed-workspaces
 pnpm install
+pnpm build
 npm install -g .
 ```
 
@@ -94,12 +95,10 @@ Example `.code-workspace` file:
 {
   "folders": [
     {
-      "path": ".",
-      "name": "Root Folder"
+      "path": "../my-project",
     },
     {
       "path": "../my-other-project",
-      "name": "Frontend"
     }
   ],
   "settings": {}
