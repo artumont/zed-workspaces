@@ -6,9 +6,9 @@
     "use_new_terminal": true
   },
   {
-    "label": "Save Workspace",
+    "label": "Create Workspace",
     "command": "zed-workspaces",
-    "args": ["save", "${ZED_WORKTREE_ROOT}"],
+    "args": ["create"],
     "use_new_terminal": true
   }
 ]

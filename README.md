@@ -14,6 +14,7 @@ First, install the CLI globally so it can be executed from anywhere. Note that y
 git clone https://github.com/artumont/zed-workspaces.git zed-workspaces
 cd zed-workspaces
 pnpm install
+pnpm build
 npm install -g .
 ```
 
@@ -36,15 +37,15 @@ Add the following configuration to the `tasks.json` array:
     "use_new_terminal": true
   },
   {
-    "label": "Save Workspace",
+    "label": "Create Workspace",
     "command": "zed-workspaces",
-    "args": ["save", "${ZED_WORKTREE_ROOT}"],
+    "args": ["create"],
     "use_new_terminal": true
   }
 ]
 ```
 
-*Note: If `zed-workspaces` is not found after running `npm install -g .`, you may need to specify the absolute path to your global node binaries or use the absolute path to the local `index.js` instead of the global command.*
+*Note: Saving current workspace functionality is currently in development so for now you can only create new workspaces.*
 
 ### 3. Add Keyboard Shortcuts (Optional)
 
@@ -77,14 +78,6 @@ Press your configured shortcut (`Ctrl+Shift+O` by default), or open the Command 
 - If your folder contains multiple workspace files, a terminal prompt will appear asking you to select one.
 - If it cannot find any workspace file, it will display an error message.
 
-### Saving a Workspace
-
-Open the Command Palette, type `task: spawn`, and select `Save Workspace`.
-
-- A terminal prompt will ask you to name the workspace.
-- The CLI will generate a `.code-workspace` file in your root folder.
-- You can manually edit this file to add more folders.
-
 ## Workspace Format
 
 The CLI uses the standard VS Code workspace format. 
@@ -94,12 +87,10 @@ Example `.code-workspace` file:
 {
   "folders": [
     {
-      "path": ".",
-      "name": "Root Folder"
+      "path": "../my-project"
     },
     {
-      "path": "../my-other-project",
-      "name": "Frontend"
+      "path": "../my-other-project"
     }
   ],
   "settings": {}
