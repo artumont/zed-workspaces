@@ -7,7 +7,7 @@ import path from "path";
  * @param fileList - An array to accumulate found workspace file paths. This is used for the recursive calls and should not be provided by the caller.
  * @returns {string[]} An array of paths to found workspace files.
  */
-export function findWorkspacesRecursive(dir: string, fileList: string[] = []): string[] {
+export function findWorkspacesRecursive(dir: string = process.cwd(), fileList: string[] = []): string[] {
   if (!fs.existsSync(dir)) return fileList;
   
   const files = fs.readdirSync(dir);
