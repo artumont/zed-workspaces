@@ -95,10 +95,10 @@ Example `.code-workspace` file:
 {
   "folders": [
     {
-      "path": "../my-project",
+      "path": "../my-project"
     },
     {
-      "path": "../my-other-project",
+      "path": "../my-other-project"
     }
   ],
   "settings": {}
