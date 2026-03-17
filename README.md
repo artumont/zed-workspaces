@@ -36,15 +36,15 @@ Add the following configuration to the `tasks.json` array:
     "use_new_terminal": true
   },
   {
-    "label": "Save Workspace",
+    "label": "Create Workspace",
     "command": "zed-workspaces",
-    "args": ["save", "${ZED_WORKTREE_ROOT}"],
+    "args": ["create"],
     "use_new_terminal": true
   }
 ]
 ```
 
-*Note: If `zed-workspaces` is not found after running `npm install -g .`, you may need to specify the absolute path to your global node binaries or use the absolute path to the local `index.js` instead of the global command.*
+*Note: Saving current workspace functionality is currently in development so for now you can only create new workspaces.*
 
 ### 3. Add Keyboard Shortcuts (Optional)
 
